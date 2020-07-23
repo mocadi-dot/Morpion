@@ -20,6 +20,7 @@ puts "Voici vos symboles :"
  puts " Bienvenue dans cette partie. A vos marques, prêt. Grattez-vous !!!"
 
      @board = Board.new
+     @board.play_turn
 
 
 #ensuite transition vers le plateau
