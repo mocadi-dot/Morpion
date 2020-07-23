@@ -1,15 +1,17 @@
 Bonjour ! Je vous présente ici ma version du Morpion.
 
 - 2 joueurs
-    Présentation et affichage
-      *Joueur 1 : Quel est ton nom ?*
-        Joueur 1, bravo tu seras les O lors de cette partie
-      *Joueur 2 : Quel est ton nom ?*
-        Joueur 2, bravo tu seras les X lors de cette partie
+    **Présentation et affichage**
+      Joueur 1 : Quel est ton nom ?
+        *Joueur 1*
+        Super tu seras les O lors de cette partie !
+      Joueur 2 : Quel est ton nom ?
+        *Joueur 2*
+        Super tu seras les X lors de cette partie !
 
 - Le premier qui aligne 3 pions a gagné => la victoire est annoncée
 
-    *Les combinaisons de victoires sont :*
+    **Les combinaisons de victoires sont :**
 
     Ligne a) XXX, OOO,
     Ligne b) XXX, OOO,

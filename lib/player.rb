@@ -13,6 +13,6 @@ class Player
   end
 
   def show_value #défini l'affichage des noms des joueurs
-      puts "#{@name}, bravo tu seras les #{@player_value} lors de cette partie"
+      puts "#{@name} Super tu seras les #{@player_value} lors de cette partie !"
   end
 end
