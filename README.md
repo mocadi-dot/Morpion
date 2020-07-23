@@ -39,11 +39,11 @@ Bonjour ! Je vous présente ici ma version du Morpion.
 - A la fin d'un match une nouvelle partie est proposée
 
 
-Le plateau de jeu est défini selon ce qui est demandé dans mon énoncé :
+Le plateau de jeu est défini comme suite :
 
-   1     2     3
-A____|A____|A____|
+   A     B     C
+1____|____|____|
 
-B____|B____|B____|
+2____|____|____|
 
-C____|C____|C____|
+3____|____|____|
