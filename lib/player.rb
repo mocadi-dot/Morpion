@@ -1,41 +1,17 @@
 require 'pry'
-# joueurs, ou joueur 1 et joueur 2?
+
 class Player
-  attr_accessor :name,
+  attr_accessor :name, :player_value
+  def ask_name
+    puts "Quel est ton nom?"
+    return gets
+  end
 
-  def initialize(name) # initialisation du nom
-      @name = name
+  def initialize(name, player_value) # initialisation du nom et de la valeur
+      @name = ask_name
+      @player_value = player_value
+
       end
+end
 
-
-
-  #Les Méthodes
-
-  #Méthode 1 à définir
-
-  def show_state #défini l'affichage des points de vie du joueur
-        puts "#{@name} a #{@life_points} points de vie restant"
-  end
-
-  #Méthode 2 à définir
-
-  def gets_damage(degats)       #dégats reçus
-    @life_points -= degats
-    if @life_points <= 0
-      puts "le joueur #{@name} est mort !"
-    end
-  end
-  #Méthode Détecter Victoire
-
-
-  #annoncer Victoire
-
-
-  #Méthode 4 Détecter match nul
-
-
-  #annoncer match nul
-
-
-
-  #proposer une autre partie
+#rajouter "nom" ton symbole sera "X" "nom" ton symbole sera "O" pour chaque joueur
