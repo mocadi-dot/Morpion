@@ -7,11 +7,12 @@ class Player
     return gets
   end
 
-  def initialize(name, player_value) # initialisation du nom et de la valeur
+  def initialize(player_value) # initialisation du nom et de la valeur
       @name = ask_name
       @player_value = player_value
+  end
 
-      end
+  def show_value #défini l'affichage des noms des joueurs
+      puts "#{@name}, bravo tu seras les #{@player_value} lors de cette partie"
+  end
 end
-
-#rajouter "nom" ton symbole sera "X" "nom" ton symbole sera "O" pour chaque joueur
