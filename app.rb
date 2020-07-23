@@ -4,8 +4,8 @@ require 'pry'
 Bundler.require
 
 require_relative 'lib/player'
-
-
+require_relative 'lib/board'
+require_relative 'lib/BoardCase'
 
 player1 = Player.new("O")
 player2 = Player.new("X")
@@ -17,3 +17,4 @@ puts "Voici vos symboles :"
  puts "
  ---
  "
+#ensuite transition vers le plateau
