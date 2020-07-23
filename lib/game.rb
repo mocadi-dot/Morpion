@@ -1,21 +1,119 @@
 class Game
-  #TO DO : la classe a plusieurs attr_accessor: le current_player (égal à un objet Player), le status (en cours, nul ou un objet Player s'il gagne), le Board et un array contenant les 2 joueurs.
+      attr_accessor :players, :board, :player_value, :whos_turn_player
 
-  def initialize
-    puts "coucou"
-    #TO DO : créé 2 joueurs, créé un board, met le status à "on going", défini un current_player
-  end
+      def initialize
+        @player1 = Player.new("O")
+        @player2 = Player.new("X")
 
-  def turn
-    #TO DO : méthode faisant appelle aux méthodes des autres classes (notamment à l'instance de Board). Elle affiche le plateau, demande au joueur ce qu'il joue, vérifie si un joueur a gagné, passe au joueur suivant si la partie n'est pas finie.
-  end
 
-  def new_round
-    # TO DO : relance une partie en initialisant un nouveau board mais en gardant les mêmes joueurs.
-  end
 
-  def game_end
-    # TO DO : permet l'affichage de fin de partie quand un vainqueur est détecté ou si il y a match nul
-  end
+      @board = Board.new
+        puts ""
+        puts "||*///////////////////////////////////////////////////////////////*||"
+        puts "||                                                                 ||"
+        puts "||                        **Bienvenue**                            ||"
+        puts "||                             au                                  ||"
+        puts "||                         **Morpion**                             ||"
+        puts "||                                                                 ||"
+        puts "||*///**/////////////////////////////////////////////////////**///*||"
+        puts ""
 
+        puts "Voici vos symboles :"
+        @player1.show_value
+        @player2.show_value
+
+        @whos_turn_player = @player1
+        puts""
+        puts""
+        puts (" Bienvenue dans cette partie. A vos marques, prêt. Grattez-vous !!!")
+        puts""
+      end
+
+      def whos_turn_running #en boucle
+            i = 0
+        while i < 9
+            puts ("=" * 60 )
+            puts ""
+            # Affiche le plateau :
+            @board.to_s
+            puts ""
+            puts ("=" * 60 )
+            puts ""
+            puts ("  C'est le tour de #{@whos_turn_player.name} avec les #{@whos_turn_player.player_value}")
+            print ("  Veuillez Choisir une case ")
+            print (" :=> ")
+
+            # On appelle la méthode play de la classe board sur le joueur en cours . Elle demande au joueur quelle case il joue, puis affiche son symbole dans la case
+            @board.play_turn(@whos_turn_player.player_value)
+            puts ""
+
+            # On arrête la boucle en cas de victoire
+            if @board.victory == true
+                puts ""
+                puts ("=" * 60 )
+                puts ""
+                @board.to_s
+                puts ""
+                end_page_win
+                puts ""
+                puts ("=" * 60 )
+                puts ""
+                mini_menu_replay
+                puts ""
+                break
+            end
+
+            #on passe au joueur suivant et on boucle (tour suivant) si pas de vainceur!
+            players_change_turns
+            i = i + 1
+            # on affiche les nombres de tour restants car le jeux continuer d'avancer et s'arrete a 9 coups maximum
+            puts ""
+            puts ""
+            puts (" Il reste #{9 - i} tours avant la fin de la partie !")
+        end
+        #page d'affichage de la fin de partie sur une égalitée ou une partie nul
+        end_page_draw
+        puts ""
+        mini_menu_replay
+    end
+
+    def end_page_win
+      puts ("#{@whos_turn_player.name} a gagné")
+    end
+
+    def mini_menu_replay
+        puts (" REJOUER ")
+        puts ""
+        puts ("       0        - > QUITTER ")
+        puts ("  autre touche  - > RECOMMENCER ").colorize(:pink)
+        puts ""
+        print (" |-> ")
+        choise = gets.chomp
+        if choise == "0"
+            abort
+        else
+            Game.new.game_launch
+        end
+    end
+
+
+
+    def players_change_turns
+        if @whos_turn_player == @player1
+          @whos_turn_player = @player2
+        else
+          @whos_turn_player = @player1
+        end
+    end
+
+    def end_page_draw
+      puts ("  Match nul !!!  ")
+    end
+
+    def game_launch
+        # lance la partie
+        while @board.victory == false
+          self.whos_turn_running
+        end
+    end
 end
